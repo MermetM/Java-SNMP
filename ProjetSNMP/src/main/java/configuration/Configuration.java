@@ -44,7 +44,7 @@ public class Configuration {
 		
 		 
 		JSONArray jsonArr = new JSONArray();
-		try (FileWriter file = new FileWriter("/home/saaam/eclipse-workspace/LogitielSNMP/materiels.json")) {
+		try (FileWriter file = new FileWriter("H:\\Documents\\materiels.json")) {
 			
 				
 			for(Materiel temp : objList) {
