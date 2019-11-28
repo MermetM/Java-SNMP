@@ -36,7 +36,7 @@ public class Monitoring {
 	
 	
 	
-	public static TransportMapping transportMapping() throws IOException {
+	private static TransportMapping transportMapping() throws IOException {
 	    TransportMapping transport = new DefaultUdpTransportMapping();
 	    transport.listen();
 	    return transport;
@@ -65,9 +65,11 @@ public class Monitoring {
 	    PDU response = responseEvent.getResponse();
 	    
 	    if(response == null){
+	    	
 //	        log.warn("response null - error:{} peerAddress:{} source:{} request:{}",
 //	                responseEvent.getError(),
 //	                responseEvent.getPeerAddress());
+	    	
 	    	System.out.println("pas de reponses");
 	    } 
 	    System.out.println(response.getVariableBindings());

@@ -19,7 +19,7 @@ import org.json.simple.parser.ParseException;
 
 public class Configuration {
 	
-	List<Materiel> objList;
+	ArrayList<Materiel> objList;
 	//JSONObject objList;
 	
 	
@@ -32,9 +32,26 @@ public class Configuration {
 	
 	public void newEquipement(String ip, String name, List<String> oIDS) throws IOException {
 		
-		Materiel mat = new Materiel(ip, name, oIDS);
-		objList.add(mat);
-		//System.out.println(mat.toString());
+		if(isIpExist(ip) == false) {
+			Materiel mat = new Materiel(ip, name, oIDS);
+			objList.add(mat);
+			System.out.println("Successfully Added New Materiel To The Curent Config...");
+			System.out.println(mat.toString());
+		}
+		
+	}
+	
+	
+	public boolean isIpExist (String ip) {
+		boolean isIP = false;
+		
+		for(Materiel temp : objList) {
+			if(temp.getIp() == ip)
+					{
+						isIP=true;
+					} 
+		}
+		return isIP;
 	}
 	
 	
@@ -52,12 +69,11 @@ public class Configuration {
 				JSONObject objJSON = new JSONObject();
 				JSONObject obj = new JSONObject();
 				
-				objJSON.put("ip", temp.getIp());
+				objJSON.put("ip", temp.getIp()); 
 				objJSON.put("name", temp.getName());
 			
 				JSONArray oids = new JSONArray();
 				Iterator<String> iterator = temp.getOIDS().iterator();
-
 				while(iterator.hasNext()) {
 					oids.add(iterator.next());
 				}
@@ -90,7 +106,7 @@ public class Configuration {
 		return objList;
 	}
 
-	private void readJsonFile() {
+	public void readJsonFile() {
 		//JSON parser object to parse read file
 	    JSONParser jsonParser = new JSONParser();
 	     
@@ -108,7 +124,7 @@ public class Configuration {
 	
 	    } catch (FileNotFoundException e) {
 	        //e.printStackTrace();
-	        System.out.println("fichier vide ou inexistant");
+	        System.out.println("fichier inexistant");
 	    } catch (IOException e) {
 	        e.printStackTrace();
 	    } catch (ParseException e) {
@@ -124,17 +140,17 @@ public class Configuration {
 	     
 
 	    String ip = (String) materielObject.get("ip");    
-	    System.out.println(ip);
+	    //System.out.println(ip);
 	     
 
 	    String name = (String) materielObject.get("name");  
-	    System.out.println(name);
+	    //System.out.println(name);
 	     
 
-	    List<String> OIDS =  (List<String>) materielObject.get("OIDS");    
-        //System.out.println(Arrays.toString(OIDS));
+	    List<String> oIDS = (List<String>) materielObject.get("list oids");    
+        //System.out.println(oIDS.toString());
 	    
-	    Materiel mat = new Materiel(ip, name, OIDS);
+	    Materiel mat = new Materiel(ip, name, oIDS);
 	    objList.add(mat);
 	    
 	}

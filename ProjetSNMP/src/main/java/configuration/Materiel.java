@@ -1,6 +1,7 @@
 package configuration;
   
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -14,6 +15,7 @@ public class Materiel {
 
 	private String ip;
 	private String name;
+	
 	//private String[] OIDS; 
 	List<String> OIDS;
 	
@@ -23,6 +25,7 @@ public class Materiel {
 	super();
 	this.ip = ip;
 	this.name = name;
+	
 	OIDS = oIDS;
 }
 
