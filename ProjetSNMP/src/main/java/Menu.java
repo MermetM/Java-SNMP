@@ -27,7 +27,8 @@ public class Menu {
 			case 1:  
 				displayMenuConfig();
 				break;
-			case 2:  // do something
+			case 4:  
+				System.out.println("FIN !!");
 				break;
 			}
 		} catch (NumberFormatException e) {  }
