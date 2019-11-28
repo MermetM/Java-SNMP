@@ -1,6 +1,5 @@
 package log;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -33,7 +32,7 @@ public class Log {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
 		LocalDateTime now = LocalDateTime.now();  
 		System.out.println(dtf.format(now));  
-		write(ErrorFile, "ModifiÃ© le [ " + dtf.format(now) +" ] : " + message);
+		write(ErrorFile, "Modifié le [ " + dtf.format(now) +" ] : " + message);
 	}
 	
 	public static void write (File file, String ligne) throws IOException {
@@ -57,6 +56,13 @@ public class Log {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
+	}
+	
+	public static void listerLog() {
+		InputStream flux=new FileInputStream("console.txt");
+        InputStreamReader lecture=new InputStreamReader(flux);
+        BufferedReader buff=new BufferedReader(lecture);
+        message = buff.readLine();
 	}
 }
 
