@@ -26,7 +26,7 @@ public class Configuration {
 	public Configuration() {
 		super();
 		objList = new ArrayList<Materiel>();
-		readJsonFile();
+		//readJsonFile();
 	}
 	
 	
@@ -153,6 +153,19 @@ public class Configuration {
 	    Materiel mat = new Materiel(ip, name, oIDS);
 	    objList.add(mat);
 	    
+	}
+	
+	public Materiel getEquipementByName(String name) {
+		Materiel mat = null;
+		
+		for(Materiel temp : objList) {
+			if(temp.getName().equals(name))
+			{
+				mat = temp;
+			}
+		}
+	
+		return mat;
 	}
 }
 

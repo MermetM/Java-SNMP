@@ -26,7 +26,7 @@ public class Monitoring {
 	
 	private static int snmpVersion  = SnmpConstants.version1;
 	
-	public void snmpRequest(String ipAddress, String port, String oid) throws IOException {
+	public static void snmpRequest(String ipAddress, String port, String oid) throws IOException {
 	     Snmp snmp = new Snmp(transportMapping());
 	     Target target = targetCom(ipAddress, port, snmpVersion);
 	     PDU responsePDU = snmpGet(snmp, target, oid);

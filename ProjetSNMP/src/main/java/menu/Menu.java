@@ -8,16 +8,19 @@ import java.util.Scanner;
 import configuration.Configuration;
 import configuration.Create;
 import log.Log;
+import monitoring.Monitoring;
+import monitoring.Request;
 
 public class Menu {
 	
 	public static Configuration conf = new Configuration();
+	
 
-	public static void displayMenu() {
+	public static void displayMenu() throws IOException {
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(System.in);
 
-		System.out.println("\n\n         Menu SNMP");
+		System.out.println("\n\n         Menu Principal");
 		System.out.println("--------------------------------------");
 		System.out.println("1 - Configuration d'un équipement");
 		System.out.println("2 - Monitoring d'un équipement");
@@ -46,7 +49,7 @@ public class Menu {
 	}
 
 	@SuppressWarnings("resource")
-	public static void displayMenuConfig() {
+	public static void displayMenuConfig() throws IOException {
 		
 		Scanner input = new Scanner(System.in);
 		
@@ -95,13 +98,13 @@ public class Menu {
 	}
 
 	@SuppressWarnings("resource")
-	public static void displayMenuMonitoring() {
+	public static void displayMenuMonitoring() throws IOException {
 
 		Scanner input = new Scanner(System.in);
 
 		System.out.println("\n\n         Menu Monitoring");
 		System.out.println("--------------------------------------");
-		System.out.println("1 - ");
+		System.out.println("1 - SNMP Request");
 		System.out.println("2 - ");
 		System.out.println("5 - Revenir au menu précedent");
 
@@ -112,19 +115,17 @@ public class Menu {
 
 			switch (input1) {
 			case 1:  
-
+				conf.listEquipement();
+				Request.snmpRequest();
+				displayMenuMonitoring();
 				break;
 
 			case 2: 
-
+				displayMenuMonitoring();
 				break;
 
 			case 3: 
-
-				break;
-
-			case 4: 
-
+				displayMenuMonitoring();
 				break;
 
 			case 5: 
@@ -138,7 +139,7 @@ public class Menu {
 	}
 
 	@SuppressWarnings("resource")
-	public static void displayMenuLog() {
+	public static void displayMenuLog() throws IOException {
 
 		Scanner input = new Scanner(System.in);
 
