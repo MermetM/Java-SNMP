@@ -1,7 +1,7 @@
 package log;
 
 public class Constante {
-	final static String SuccessPath = "H:\\Documents\\Success.txt";
-	final static String ErrorPath = "H:\\Documents\\Error.txt";
-	final static String ModifPath = "H:\\Documents\\Modif.txt";
+	final static String SuccessPath = "C:\\SNMP\\Success.txt";
+	final static String ErrorPath = "C:\\SNMP\\Error.txt";
+	final static String ModifPath = "C:\\SNMP\\Modif.txt";
 }

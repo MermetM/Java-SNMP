@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import configuration.Configuration;
+import log.Log;
 
 public class Menu {
 
@@ -17,31 +18,33 @@ public class Menu {
 		System.out.println("2 - Monitoring d'un équipement");
 		System.out.println("3 - Accéder au log de l'équipement");
 		System.out.println("4 - Quitter");
-
 		System.out.print("\nChoisissez ce que vous voulez faire: ");
 		try {
-
 			int input1 = (input.nextInt()); 
 
 			switch (input1) {
 			case 1:  
 				displayMenuConfig();
 				break;
+			case 2:  
+				displayMenuMonitoring();
+				break;
+			case 3:  
+				displayMenuLog();
+				break;
+
 			case 4:  
-				System.out.println("FIN !!");
+				System.out.println("\n!!!!! FIN !!!!!");
 				break;
 			}
 		} catch (NumberFormatException e) {  }
-
-
 	}
-	
+
 	@SuppressWarnings("resource")
 	public static void displayMenuConfig() {
 		
 		Scanner input = new Scanner(System.in);
-		Configuration conf = new Configuration();
-			
+		
 		System.out.println("\n\n         Menu Configuration");
 		System.out.println("--------------------------------------");
 		System.out.println("1 - Créer un équipement ");
@@ -49,7 +52,6 @@ public class Menu {
 		System.out.println("3 - Importer configuration depuis un Json");
 		System.out.println("4 - Sauvergarde et restauration");
 		System.out.println("5 - Revenir au menu précedent");
-
 		System.out.print("\nChoisissez ce que vous voulez faire: ");
 		try {
 
@@ -70,135 +72,132 @@ public class Menu {
 					Scanner input_oid = new Scanner(System.in);
 					String oid = input_oid.nextLine(); 
 					listOids.add(oid);
-					char  reponse = oid.charAt(0);
+					char reponse = oid.charAt(0);
 					if ( reponse == 'q' ) {
-				 		i = 0;
+						i = 0;
 						listOids.remove(oid);
 					}					
 				}				
-				
+
 				try {
-					conf.newEquipement(ip, name, listOids);
-					conf.sauvEquipement();
+					Start.conf.newEquipement(ip, name, listOids);
+					Start.conf.sauvEquipement();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				displayMenuConfig();
-				
+
 				break;
-				
+
 			case 2: 
-				conf.listEquipement();
+				Start.conf.listEquipement();
 				displayMenuConfig();
 				break;
-			
+
 			case 3: 
-				
+
 				displayMenuConfig();
 				break;
-			
+
 			case 4: 
-				
+
 				displayMenuConfig();
 				break;
-				
+
 			case 5: 
 				displayMenu();
 				break;
-				
-			
+
+
 			}
 		} catch (NumberFormatException e) {  }
-		
+
 	}
-	
-		@SuppressWarnings("resource")
-		public static void displayMenuMonitoring() {
-			
-			Scanner input = new Scanner(System.in);
-			Configuration conf = new Configuration();
-				
-			System.out.println("\n\n         Menu Monitoring");
-			System.out.println("--------------------------------------");
-			System.out.println("1 - ");
-			System.out.println("2 - ");
-			System.out.println("5 - Revenir au menu précedent");
 
-			System.out.print("\nChoisissez ce que vous voulez faire: ");
-			try {
+	@SuppressWarnings("resource")
+	public static void displayMenuMonitoring() {
 
-				int input1 = (input.nextInt()); 
+		Scanner input = new Scanner(System.in);
 
-				switch (input1) {
-				case 1:  
-									
-					break;
-					
-				case 2: 
-					
-					break;
-				
-				case 3: 
-					
-					break;
-				
-				case 4: 
-					
-					break;
-					
-				case 5: 
-					displayMenu();
-					break;
-					
-				
-				}
-			} catch (NumberFormatException e) {  }
-			
+		System.out.println("\n\n         Menu Monitoring");
+		System.out.println("--------------------------------------");
+		System.out.println("1 - ");
+		System.out.println("2 - ");
+		System.out.println("5 - Revenir au menu précedent");
+
+		System.out.print("\nChoisissez ce que vous voulez faire: ");
+		try {
+
+			int input1 = (input.nextInt()); 
+
+			switch (input1) {
+			case 1:  
+
+				break;
+
+			case 2: 
+
+				break;
+
+			case 3: 
+
+				break;
+
+			case 4: 
+
+				break;
+
+			case 5: 
+				displayMenu();
+				break;
+
+
+			}
+		} catch (NumberFormatException e) {  }
+
 	}
-	
-		@SuppressWarnings("resource")
-		public static void displayMenuLog() {
-			
-			Scanner input = new Scanner(System.in);
-			Configuration conf = new Configuration();
-				
-			System.out.println("\n\n         Menu Log");
-			System.out.println("--------------------------------------");
-			System.out.println("1 - Lister le fichier de Log Erreur");
-			System.out.println("2 - Lister le fichier de Log Succés");
-			System.out.println("5 - Revenir au menu précedent");
 
-			System.out.print("\nChoisissez ce que vous voulez faire: ");
-			try {
+	@SuppressWarnings("resource")
+	public static void displayMenuLog() {
 
-				int input1 = (input.nextInt()); 
+		Scanner input = new Scanner(System.in);
 
-				switch (input1) {
-				case 1:  
-									
-					break;
-					
-				case 2: 
-					
-					break;
-				
-				case 3: 
-					
-					break;
-				
-				case 4: 
-					
-					break;
-					
-				case 5: 
-					displayMenu();
-					break;
-					
-				
-				}
-			} catch (NumberFormatException e) {  }
-			
+		System.out.println("\n\n         Menu Log");
+		System.out.println("--------------------------------------");
+		System.out.println("1 - Lister le fichier de Log Erreur");
+		System.out.println("2 - Lister le fichier de Log Success");
+		System.out.println("3 - Voir les modifications faites sur l'équipement");
+		System.out.println("4 - Revenir au menu précedent");
+
+		System.out.print("\nChoisissez ce que vous voulez faire: ");
+		try {
+
+			int input1 = (input.nextInt()); 
+
+			switch (input1) {
+			case 1:  
+				Log.voirErreur();
+				displayMenuLog();
+				break;
+
+			case 2: 
+				Log.voirSuccess();
+				displayMenuLog();
+				break;
+
+			case 3: 
+				Log.voirModif();
+				displayMenuLog();
+				break;
+
+			case 4: 
+				displayMenu();
+				break;			
+
+			}
+		} catch (NumberFormatException e) {  }
+
 	}
 
 }

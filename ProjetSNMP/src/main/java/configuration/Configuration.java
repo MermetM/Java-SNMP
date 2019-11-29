@@ -61,7 +61,7 @@ public class Configuration {
 		
 		 
 		JSONArray jsonArr = new JSONArray();
-		try (FileWriter file = new FileWriter("/home/saaam/eclipse-workspace/LogitielSNMP/materiels.json")) {
+		try (FileWriter file = new FileWriter("C:\\SNMP\\materiels.json")) {
 			
 				
 			for(Materiel temp : objList) {
@@ -110,7 +110,7 @@ public class Configuration {
 		//JSON parser object to parse read file
 	    JSONParser jsonParser = new JSONParser();
 	     
-	    try (FileReader reader = new FileReader("/home/saaam/eclipse-workspace/LogitielSNMP/materiels.json"))
+	    try (FileReader reader = new FileReader("C:\\SNMP\\materiels.json"))
 	    {
 	        //Read JSON file
 	        Object obj = jsonParser.parse(reader);
