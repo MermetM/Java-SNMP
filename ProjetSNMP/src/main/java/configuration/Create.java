@@ -30,7 +30,7 @@ public class Create {
 
 		try {
 			menu.Menu.conf.newEquipement(ip, name, listOids);
-			menu.Menu.conf.sauvEquipement();
+			//menu.Menu.conf.sauvEquipement();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

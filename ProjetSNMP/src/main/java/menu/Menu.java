@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import configuration.Configuration;
 import configuration.Create;
 import log.Log;
@@ -57,7 +56,7 @@ public class Menu {
 		System.out.println("--------------------------------------");
 		System.out.println("1 - Créer un équipement ");
 		System.out.println("2 - Lister/Afficher un configuration");
-		System.out.println("3 - Importer configuration depuis un Json");
+		System.out.println("3 - Supprimer un équipement");
 		System.out.println("4 - Sauvergarde et restauration");
 		System.out.println("5 - Revenir au menu précedent");
 		System.out.print("\nChoisissez ce que vous voulez faire: ");
@@ -83,7 +82,7 @@ public class Menu {
 				break;
 
 			case 4: 
-
+				conf.sauvEquipement();
 				displayMenuConfig();
 				break;
 
@@ -105,7 +104,7 @@ public class Menu {
 		System.out.println("\n\n         Menu Monitoring");
 		System.out.println("--------------------------------------");
 		System.out.println("1 - SNMP Request");
-		System.out.println("2 - ");
+		System.out.println("2 - Voir états de tous les équipements");
 		System.out.println("5 - Revenir au menu précedent");
 
 		System.out.print("\nChoisissez ce que vous voulez faire: ");
@@ -121,10 +120,7 @@ public class Menu {
 				break;
 
 			case 2: 
-				displayMenuMonitoring();
-				break;
-
-			case 3: 
+				Request.requestAll();
 				displayMenuMonitoring();
 				break;
 
