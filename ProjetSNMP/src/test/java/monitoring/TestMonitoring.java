@@ -11,7 +11,7 @@ public class TestMonitoring {
 		
 		try {
 			
-			moni.snmpRequest("10.0.0.0", "8080", ".1.3.6.1.2.1.1.1.0");
+			moni.snmpRequest("127.0.0.1", "161", "1.3.6.1.2.1.1.6.0");
 			
 		} catch (IOException e) {
 			

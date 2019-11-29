@@ -60,7 +60,7 @@ public class Monitoring {
 	    pdu.add(new VariableBinding(new OID(oid)));
 	    pdu.setRequestID(new Integer32(1));
 
-	    System.out.println("test");
+	    //System.out.println("test");
 	    ResponseEvent responseEvent = snmp.send(pdu, target);
 	    PDU response = responseEvent.getResponse();
 	    
