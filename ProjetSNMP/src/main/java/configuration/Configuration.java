@@ -34,6 +34,7 @@ public class Configuration {
 	public Configuration() {
 		super();
 		objList = new ArrayList<Materiel>();
+		aPath = "";
 		readJsonFile();
 	}
 
@@ -115,8 +116,8 @@ public class Configuration {
 	}
 	
 	public void removeEquipByIndex(int nSup) throws MaterielExeption {
-
 		objList.remove(nSup);
+		System.out.println("Successfully removed...");
 	}
 
 	public void readJsonFile() {
